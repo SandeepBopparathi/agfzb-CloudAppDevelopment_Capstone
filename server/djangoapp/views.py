@@ -28,6 +28,18 @@ logger = logging.getLogger(__name__)
 # Create a `login_request` view to handle sign in request
 # def login_request(request):
 # ...
+def login_request(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['psw']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            #messages.success(request, "Login successfully!")
+            return redirect('djangoapp:index')
+        else:
+            messages.warning(request, "Invalid username or password.")
+            return redirect("djangoapp:index")
 
 # Create a `logout_request` view to handle sign out request
 # def logout_request(request):
@@ -36,6 +48,11 @@ logger = logging.getLogger(__name__)
 # Create a `registration_request` view to handle sign up request
 # def registration_request(request):
 # ...
+# line 75
+User.objects.get(username=username)
+
+# line 80
+            user = User.objects.create_user(username==username, first_name=first_name, last_name=last_name, password=password,)
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
