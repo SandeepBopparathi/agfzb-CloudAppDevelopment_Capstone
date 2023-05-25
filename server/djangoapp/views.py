@@ -64,8 +64,9 @@ def get_dealerships(request):
 # Create a `get_dealer_details` view to render the reviews of a dealer
 # def get_dealer_details(request, dealer_id):
 # ...
-
+ path('dealer/<int:id>/', views.get_dealer_details, name='dealer_details'),
 # Create a `add_review` view to submit a review
 # def add_review(request, dealer_id):
 # ...
+path('dealer/<int:id>/review', views.add_review, name='add_review'),
 
