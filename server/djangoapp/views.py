@@ -46,7 +46,7 @@ def login_request(request):
 # ...
 
 # Create a `registration_request` view to handle sign up request
-# def registration_request(request):
+# def registration_request(request);
 # ...
 # line 75
 User.objects.get(username=username)
